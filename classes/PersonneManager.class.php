@@ -1,5 +1,7 @@
 <?php
-class PersonneManager{
-	//A COMPLETER
-	
+
+class PersonneManager
+{
+    //A COMPLETER
+
 }

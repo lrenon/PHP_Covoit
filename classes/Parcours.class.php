@@ -1,5 +1,7 @@
 <?php
-class Parcours{
-	//A COMPLETER
-	
+
+class Parcours
+{
+    //A COMPLETER
+
 }

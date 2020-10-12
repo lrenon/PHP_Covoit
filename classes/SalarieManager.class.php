@@ -1,5 +1,7 @@
 <?php
-class SalarieManager{
-	//A COMPLETER
-	
+
+class SalarieManager
+{
+    //A COMPLETER
+
 }

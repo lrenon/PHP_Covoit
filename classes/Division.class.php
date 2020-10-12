@@ -1,4 +1,5 @@
 <?php //A COMPLETER
-class Division{
-	
+class Division
+{
+
 }

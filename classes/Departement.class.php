@@ -1,4 +1,6 @@
 <?php
-class Departement{
-	//A COMPLETER
+
+class Departement
+{
+    //A COMPLETER
 }

@@ -1,5 +1,7 @@
 <?php
-class VilleManager{
-	//A COMPLETER
-	
+
+class VilleManager
+{
+    //A COMPLETER
+
 }

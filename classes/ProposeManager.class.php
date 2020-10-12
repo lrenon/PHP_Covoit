@@ -1,6 +1,8 @@
 <?php
-class ProposeManager{
-	//A COMPLETER
-	
+
+class ProposeManager
+{
+    //A COMPLETER
+
 
 }

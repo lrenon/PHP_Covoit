@@ -1,5 +1,7 @@
 <?php
-class FonctionManager{
-	//A COMPLETER
-	
+
+class FonctionManager
+{
+    //A COMPLETER
+
 }

@@ -1,2 +1,2 @@
-				<h1>Ajouter une personne</h1>
+<h1>Ajouter une personne</h1>
 	

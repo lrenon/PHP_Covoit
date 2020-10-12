@@ -1,5 +1,7 @@
 <?php
-class Salarie{
-	//A COMPLETER
-	
+
+class Salarie
+{
+    //A COMPLETER
+
 }

@@ -1,4 +1,5 @@
 <?php //A COMPLETER
-class DivisionManager{
-	
+class DivisionManager
+{
+
 }

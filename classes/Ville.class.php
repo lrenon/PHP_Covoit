@@ -1,5 +1,7 @@
 <?php
-class Ville{
-	//A COMPLETER
-	
+
+class Ville
+{
+    //A COMPLETER
+
 }

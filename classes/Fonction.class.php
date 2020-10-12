@@ -1,5 +1,7 @@
 <?php
-class Fonction{
-	//A COMPLETER
-	
+
+class Fonction
+{
+    //A COMPLETER
+
 }

@@ -1,4 +1,6 @@
 <?php
-class Propose{
-	//A COMPLETER
+
+class Propose
+{
+    //A COMPLETER
 }

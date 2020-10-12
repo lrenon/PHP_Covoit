@@ -1,5 +1,7 @@
 <?php
-class ParcoursManager{
-	//A COMPLETER
-	
+
+class ParcoursManager
+{
+    //A COMPLETER
+
 }
