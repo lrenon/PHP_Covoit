@@ -2,6 +2,7 @@
 
 class Parcours
 {
-    //A COMPLETER
-
+    //VARIABLES
+    private $par_num;
+    private $par_km;
 }
