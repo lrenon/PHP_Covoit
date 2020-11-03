@@ -12,7 +12,8 @@ class VilleManager
     }
 
     //METHODES
-    public function ajouterVille($ville) {
+    public function ajouterVille($ville)
+    {
         $sql = 'INSERT INTO ville (vil_nom) VALUES (:nom)';
         $requete = $this->db->prepare($sql);
         $requete->bindValue(':nom', $ville->getVilNom());
@@ -26,7 +27,8 @@ class VilleManager
         return $retour;
     }
 
-    public function getAllVilles() {
+    public function getAllVilles()
+    {
         $listeVilles = array();
         $sql = 'SELECT vil_num, vil_nom FROM ville ORDER BY 2';
         $requete = $this->db->prepare($sql);
@@ -40,7 +42,18 @@ class VilleManager
         return $listeVilles;
     }
 
-    public function getNbrVilles() {
+    public function getVilNom($vil_num)
+    {
+        $sql = "SELECT vil_nom FROM ville WHERE vil_num = $vil_num";
+        $requete = $this->db->prepare($sql);
+        $requete->execute();
+        $vil_nom = $requete->fetch(PDO::FETCH_OBJ);
+        $requete->closeCursor();
+        return $vil_nom->vil_nom;
+    }
+
+    public function getNbrVilles()
+    {
         $sql = 'SELECT COUNT(vil_num) AS nbrVilles FROM ville';
         $requete = $this->db->prepare($sql);
         $requete->execute();
