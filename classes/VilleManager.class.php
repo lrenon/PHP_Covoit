@@ -61,5 +61,4 @@ class VilleManager
         $requete->closeCursor();
         return $nbrVilles->nbrVilles;
     }
-
 }
