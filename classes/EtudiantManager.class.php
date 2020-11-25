@@ -41,4 +41,12 @@ class EtudiantManager
         $requete->closeCursor();
         return $listeEtudiants;
     }
+
+    public function getEtudiant($per_num) {
+        $sql = 'SELECT * FROM etudiant WHERE per_num = ' . $per_num;
+        $requete = $this->db->prepare($sql);
+        $requete->execute();
+
+        return new Etudiant($requete->fetch(PDO::FETCH_OBJ));
+    }
 }

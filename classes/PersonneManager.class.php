@@ -55,4 +55,25 @@ class PersonneManager
 
         return $nbrPersonnes->nbrPersonnes;
     }
+
+    public function estUnEtudiant($per_num) {
+        $sql = 'SELECT per_num FROM etudiant WHERE per_num = ' . $per_num;
+        $requete = $this->db->prepare($sql);
+        $requete->execute();
+        $etu_nums = $requete->fetch(PDO::FETCH_OBJ);
+
+        if(!empty($etu_nums->per_num)) {
+            return true;
+        }
+        return false;
+    }
+
+    public function getPersonne($per_num) {
+        $sql = 'SELECT * FROM personne WHERE per_num = ' . $per_num;
+        $requete = $this->db->prepare($sql);
+        $requete->execute();
+
+        return new Personne($requete->fetch(PDO::FETCH_OBJ));
+    }
+
 }

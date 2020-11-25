@@ -26,4 +26,12 @@ class SalarieManager
 
         return $retour;
     }
+
+    public function getSalarie($per_num) {
+        $sql = 'SELECT * FROM salarie WHERE per_num = ' . $per_num;
+        $requete = $this->db->prepare($sql);
+        $requete->execute();
+
+        return new Salarie($requete->fetch(PDO::FETCH_OBJ));
+    }
 }

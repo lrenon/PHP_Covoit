@@ -39,4 +39,13 @@ class FonctionManager
         $requete->closeCursor();
         return $listeFonctions;
     }
+
+    public function getFonction($fon_num)
+    {
+        $sql = 'SELECT * FROM fonction WHERE fon_num = ' . $fon_num;
+        $requete = $this->db->prepare($sql);
+        $requete->execute();
+
+        return new Fonction($requete->fetch(PDO::FETCH_OBJ));
+    }
 }

@@ -12,6 +12,7 @@ class Personne
     private $per_pwd;
 
     //CONSTRUCTEUR
+
     public function __construct($valeurs = array())
     {
         if (!empty($valeurs)) {

@@ -61,4 +61,12 @@ class VilleManager
         $requete->closeCursor();
         return $nbrVilles->nbrVilles;
     }
+
+    public function getVille($vil_num) {
+        $sql = 'SELECT * FROM ville WHERE vil_num = ' . $vil_num;
+        $requete = $this->db->prepare($sql);
+        $requete->execute();
+
+        return new Ville($requete->fetch(PDO::FETCH_OBJ));
+    }
 }
