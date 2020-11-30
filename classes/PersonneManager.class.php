@@ -22,7 +22,7 @@ class PersonneManager
         $requete->bindValue(':tel', $personne->getPerTel());
         $requete->bindValue(':mail', $personne->getPerMail());
         $requete->bindValue(':login', $personne->getPerLogin());
-        $requete->bindValue(':pwd', $personne->getPerPwd());
+        $requete->bindValue(':pwd', sha1(sha1($personne->getPerPwd()) . SALT));
 
         $requete->execute();
         $requete->closeCursor();
@@ -56,24 +56,44 @@ class PersonneManager
         return $nbrPersonnes->nbrPersonnes;
     }
 
-    public function estUnEtudiant($per_num) {
+    public function estUnEtudiant($per_num)
+    {
         $sql = 'SELECT per_num FROM etudiant WHERE per_num = ' . $per_num;
         $requete = $this->db->prepare($sql);
         $requete->execute();
         $etu_nums = $requete->fetch(PDO::FETCH_OBJ);
+        $requete->closeCursor();
 
-        if(!empty($etu_nums->per_num)) {
+        if (!empty($etu_nums->per_num)) {
             return true;
         }
         return false;
     }
 
-    public function getPersonne($per_num) {
+    public function getPersonne($per_num)
+    {
         $sql = 'SELECT * FROM personne WHERE per_num = ' . $per_num;
         $requete = $this->db->prepare($sql);
         $requete->execute();
+        $requete->closeCursor();
 
         return new Personne($requete->fetch(PDO::FETCH_OBJ));
+    }
+
+    public function getConnexion($per_login, $per_pwd)
+    {
+        $sql = 'SELECT per_num FROM personne WHERE per_login = :login AND per_pwd = :password';
+        $requete = $this->db->prepare($sql);
+
+        $requete->bindValue(':login', $per_login);
+        $requete->bindValue(':password', $per_pwd);
+        $requete->execute();
+        $per_nums = $requete->fetch(PDO::FETCH_OBJ);
+
+        if (!empty($per_nums->per_num)) {
+            return $per_nums->per_num;
+        }
+        return false;
     }
 
 }

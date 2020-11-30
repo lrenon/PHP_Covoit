@@ -7,11 +7,13 @@
     <meta charset="utf-8">
 
     <?php
-    $title = "Bienvenue sur le site de covoiturage de l'IUT."; ?>
-    <title>
-        <?php echo $title ?>
-    </title>
+    if (empty($_SESSION["per_num"])) {
+        $_SESSION["per_num"] = false;
+    }
+    $title = "Bienvenue sur le site de covoiturage de l'IUT.";
+    ?>
 
+    <title><?php echo $title ?></title>
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
 </head>
 <body>
@@ -27,7 +29,17 @@
         </div>
     </div>
     <div id="connect">
-        <a href="index.php?page=11">Connexion</a>
+        <?php
+        if ($_SESSION["per_num"] == false) {
+            ?>
+            <a href="index.php?page=11">Connexion</a>
+            <?php
+        } else {
+            ?>
+            <a href="index.php?page=12">Utilisateur : <?php echo $_SESSION["per_login"] ?> Déconnexion</a>
+            <?php
+        }
+        ?>
     </div>
 </div>
 	

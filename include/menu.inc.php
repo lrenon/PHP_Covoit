@@ -21,7 +21,13 @@
 
         <p><img src="image/trajet.png" class="imagMenu" alt="Trajet"/>Trajet</p>
         <ul>
-            <li><a href="index.php?page=9">Proposer</a></li>
+            <?php
+            if ($_SESSION["per_num"] != false) {
+                ?>
+                <li><a href="index.php?page=9">Proposer</a></li>
+                <?php
+            }
+            ?>
             <li><a href="index.php?page=10">Rechercher</a></li>
         </ul>
 
