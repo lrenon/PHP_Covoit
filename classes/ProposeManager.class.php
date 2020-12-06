@@ -14,9 +14,10 @@ class ProposeManager
     //METHODES
     public function ajouterTrajet($trajet)
     {
-        $sql = 'INSERT INTO propose (per_num, pro_date, pro_time, pro_place, pro_sens) VALUES (:pernum, :date, :time, :place, :sens)';
+        $sql = 'INSERT INTO propose (par_num, per_num, pro_date, pro_time, pro_place, pro_sens) VALUES (:parnum, :pernum, :date, :time, :place, :sens)';
         $requete = $this->db->prepare($sql);
 
+        $requete->bindValue(':parnum', $trajet->getParNum());
         $requete->bindValue(':pernum', $trajet->getPerNum());
         $requete->bindValue(':date', $trajet->getProDate());
         $requete->bindValue(':time', $trajet->getProTime());
@@ -24,7 +25,7 @@ class ProposeManager
         $requete->bindValue(':sens', $trajet->getProSens());
 
 
-        $retour = $requete->exectue();
+        $retour = $requete->execute();
         $requete->closeCursor();
 
         return $retour;
@@ -43,5 +44,19 @@ class ProposeManager
 
         $requete->closeCursor();
         return $listeTrajets;
+    }
+
+    public function getProSens($vil_num1, $vil_num2) {
+        $sql = 'SELECT par_num FROM parcours WHERE vil_num1 = :vil_num1 AND vil_num2 = :vil_num2';
+
+        $requete = $this->db->prepare($sql);
+        $requete->bindValue(':vil_num1', $vil_num1);
+        $requete->bindValue(':vil_num2', $vil_num2);
+        $requete->execute();
+
+        if ($requete->rowCount() == 0) {
+            return 0;
+        }
+        return 1;
     }
 }

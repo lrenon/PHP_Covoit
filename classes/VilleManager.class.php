@@ -44,7 +44,7 @@ class VilleManager
 
     public function getVilNom($vil_num)
     {
-        $sql = "SELECT vil_nom FROM ville WHERE vil_num = $vil_num";
+        $sql = 'SELECT vil_nom FROM ville WHERE vil_num =' . $vil_num;
         $requete = $this->db->prepare($sql);
         $requete->execute();
         $vil_nom = $requete->fetch(PDO::FETCH_OBJ);
