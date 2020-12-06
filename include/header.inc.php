@@ -32,7 +32,7 @@ date_default_timezone_set('Europe/Paris');
     </div>
     <div id="connect">
         <?php
-        if ($_SESSION["per_num"] == false) {
+        if ($_SESSION["per_login"] == false) {
             ?>
             <a href="index.php?page=11">Connexion</a>
             <?php
