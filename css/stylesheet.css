@@ -176,3 +176,144 @@ h1 {
 #connect a :visited {
 
 }
+
+/*****************************************************************************************************/
+
+/* GENERAL */
+input[type=text], input[type=tel], input[type=email], input[type=password], select, input[type=date], input[type=time]{
+    border-radius: 5px;
+    border: solid black 1px;
+    box-shadow: 0 0 4px #000000 inset;
+    background-color: #CCCCCC;
+    padding: 0.5% 1%;
+    width: 160px;
+}
+input[type=submit] {
+    border-radius: 5px;
+    border: solid #333333 1px;
+    background-color: #222222;
+    padding: 4px 15px;
+    color: white;
+    font-family: "Segoe UI", Verdana, serif;
+    margin: 2% auto;
+}
+
+/* AJOUTER PERSONNE */
+#ajouterPersonne {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 3%;
+    grid-template-areas:
+            "a b"
+            "c c"
+            "v v";
+
+    width: 65%;
+    margin: auto;
+}
+
+#ajouterPersonne label {
+    text-align: left;
+}
+
+#ajouterPersonne #per_nom, #per_tel, #per_login {
+    grid-area: a;
+    float: right;
+}
+
+#ajouterPersonne #per_prenom, #per_mail, #per_pwd {
+    grid-area: b;
+    float: right;
+}
+
+#ajouterPersonne input[type=submit], #categorie {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    margin: 1% auto;
+}
+
+/* AJOUTER PARCOURS */
+#ajouterParcours {
+    display: grid;
+    grid-template-columns: 25% 25% 50%;
+    grid-gap: 3%;
+    grid-template-areas:
+            "a a"
+            "b b";
+    width: 90%;
+    margin: auto;
+}
+
+#ajouterParcours input[type=submit] {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+/* CONNEXION */
+#connexion {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-gap: 10%;
+    width: 30%;
+    margin: auto;
+}
+#connexion label {
+    text-align: left;
+}
+
+#connexion label[for=captcha] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#connexion input[type=text],  input[type=password]{
+    float: right;
+}
+
+#connexion img {
+    border: solid black 1px;
+}
+
+/* PROPOSER ET CHERCHER TRAJET */
+#proposerTrajet, #chercherTrajet{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 5%;
+    width: 70%;
+    margin: auto;
+}
+
+#proposerTrajet input[type=submit], #chercherTrajet input[type=submit] {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+#proposerTrajet #pro_place, #chercherTrajet #pro_time {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+#proposerTrajet input, #proposerTrajet select, #chercherTrajet input, #chercherTrajet select {
+    float: right;
+}
+
+#proposerTrajet label, #chercherTrajet label {
+    text-align: left;
+}
+
+/* TABLEAUX */
+table {
+    width: 80%;
+    margin: 2% auto;
+    border-collapse: collapse;
+}
+
+table td {
+    border: solid black 1px;
+}
+
+table a {
+    font-weight: bold;
+}
+

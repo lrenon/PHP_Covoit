@@ -65,7 +65,7 @@ class ParcoursManager
         return $listeVilles;
     }
 
-    public function getVillesArrivees($vil_num1)
+    public function getAllArrivees($vil_num1)
     {
         $sql = 'SELECT DISTINCT vil_num, vil_nom FROM ville 
                 WHERE vil_num IN 

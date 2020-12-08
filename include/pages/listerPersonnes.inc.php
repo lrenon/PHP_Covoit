@@ -9,23 +9,25 @@ if (empty($_GET["per_num"])) {
     echo "Actuellement " . $nbrPersonnes . " personnes sont enregistrées";
     ?>
     <table>
-    <tr>
-        <th>Numéro</th>
-        <th>Nom</th>
-        <th>Prénom</th>
-    </tr>
-    <?php
-    foreach ($personneManager->getAllPersonnes() as $personne) { ?>
         <tr>
-            <td><a href="index.php?page=2&per_num=<?php echo $personne->getPerNum() ?>"><?php echo $personne->getPerNum() ?></a></td>
-            <td><?php echo $personne->getPerNom() ?></td>
-            <td><?php echo $personne->getPerPrenom() ?></td>
+            <th>Numéro</th>
+            <th>Nom</th>
+            <th>Prénom</th>
         </tr>
+        <?php
+        foreach ($personneManager->getAllPersonnes() as $personne) { ?>
+            <tr>
+                <td>
+                    <a href="index.php?page=2&per_num=<?php echo $personne->getPerNum() ?>"><?php echo $personne->getPerNum() ?></a>
+                </td>
+                <td><?php echo $personne->getPerNom() ?></td>
+                <td><?php echo $personne->getPerPrenom() ?></td>
+            </tr>
+            <?php
+        }
+        ?>
+    </table>
     <?php
-    }
-    ?>
-</table>
-<?php
 } else {
     $per_num = $_GET["per_num"];
     $personne = $personneManager->getPersonne($per_num);

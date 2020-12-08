@@ -50,33 +50,19 @@ if (empty($_POST["per_nom"]) && empty($_POST["per_prenom"]) && empty($_POST["per
     }
     ?>
     <h1>Ajouter une personne</h1>
-    <form action="index.php?page=1" method="post">
-        <div>
-            <label for="per_nom">Nom : </label>
-            <input type="text" name="per_nom" id="per_nom" required>
-            <label for="per_prenom">Prénom : </label>
-            <input type="text" name="per_prenom" id="per_prenom" required>
-        </div>
-        <div>
-            <label for="per_tel">Téléphone : </label>
-            <input type="tel" name="per_tel" id="per_tel" required>
-            <label for="per_mail">Mail : </label>
-            <input type="email" name="per_mail" id="per_mail" required>
-        </div>
-        <div>
-            <label for="per_login">Login : </label>
-            <input type="text" name="per_login" id="per_login" required>
-            <label for="per_pwd">Mot de passe : </label>
-            <input type="password" name="per_pwd" id="per_pwd" required>
-        </div>
-        <div>
-            <label>Catégorie :
-                <input checked type="radio" name="cat" id="cat_etu" value="cat_etu" required>
-                <label for="cat_etu">Etudiant</label>
-                <input type="radio" name="cat" id="cat_sal" value="cat_sal" required>
-                <label for="cat_sal">Personnel</label>
-            </label>
-        </div>
+    <form action="index.php?page=1" method="post" id="ajouterPersonne">
+        <label for="per_nom">Nom : <input type="text" name="per_nom" id="per_nom" required></label>
+        <label for="per_prenom">Prénom : <input type="text" name="per_prenom" id="per_prenom" required></label>
+        <label for="per_tel">Téléphone : <input type="tel" name="per_tel" id="per_tel" required></label>
+        <label for="per_mail">Mail : <input type="email" name="per_mail" id="per_mail" required></label>
+        <label for="per_login">Login : <input type="text" name="per_login" id="per_login" required></label>
+        <label for="per_pwd">Mot de passe : <input type="password" name="per_pwd" id="per_pwd" required></label>
+        <label id="categorie">Catégorie :
+            <input checked type="radio" name="cat" id="cat_etu" value="cat_etu" required>
+            <label for="cat_etu">Etudiant</label>
+            <input type="radio" name="cat" id="cat_sal" value="cat_sal" required>
+            <label for="cat_sal">Personnel</label>
+        </label>
         <input type="submit" value="Valider">
     </form>
     <?php

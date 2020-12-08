@@ -8,14 +8,17 @@ if (empty($_POST["per_login"]) || empty($_POST["per_pwd"]) || empty($_POST["capt
     $_SESSION["premierChiffre"] = rand(1, 9);
     $_SESSION["secondChiffre"] = rand(1, 9);
     ?>
-    <form action="index.php?page=11" method="post">
+    <form action="index.php?page=11" method="post" id="connexion">
         <label>Nom d'utilisateur : <input type="text" name="per_login"></label>
         <label>Mot de passe : <input type="password" name="per_pwd"></label>
-        <img src="image/nb/<?php echo $_SESSION["premierChiffre"] ?>.jpg" alt="premierChiffre">
-        <?php echo " + " ?>
-        <img src="image/nb/<?php echo $_SESSION["secondChiffre"] ?>.jpg" alt="premierChiffre">
-        <?php echo " = " ?>
-        <label><input type="text" name="captcha"></label>
+
+        <label for="captcha">
+            <img src="image/nb/<?php echo $_SESSION["premierChiffre"] ?>.jpg" alt="premierChiffre">
+            +
+            <img src="image/nb/<?php echo $_SESSION["secondChiffre"] ?>.jpg" alt="premierChiffre">
+            =
+            <input type="text" name="captcha" id="captcha">
+        </label>
         <input type="submit" name="valider" value="Valider">
     </form>
     <?php

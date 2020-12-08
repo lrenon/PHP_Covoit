@@ -75,7 +75,6 @@ class PersonneManager
         $sql = 'SELECT * FROM personne WHERE per_num = ' . $per_num;
         $requete = $this->db->prepare($sql);
         $requete->execute();
-        $requete->closeCursor();
 
         return new Personne($requete->fetch(PDO::FETCH_OBJ));
     }
