@@ -38,7 +38,12 @@ if (empty($_POST["vil_num1"]) && empty($_POST["vil_num2"]) && empty($_POST["par_
     $parcours = new Parcours($_POST);
     $retour = $parcoursManager->ajouterParcours($parcours);
 
-    if ($retour != 0) {
+    if (!$retour) {
+        ?>
+        <img src="image/erreur.png" alt="erreur">
+        <?php
+        echo "Le parcours existe déjà !";
+    } else  if ($retour != 0) {
         ?>
         <img src="image/valid.png" alt="valid">
         <?php

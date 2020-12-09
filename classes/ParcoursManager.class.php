@@ -14,15 +14,36 @@ class ParcoursManager
     //METHODES
     public function ajouterParcours($parcours)
     {
-        $sql = 'INSERT INTO parcours (vil_num1, vil_num2, par_km) VALUES (:vil_num1, :vil_num2, :par_km)';
-        $requete = $this->db->prepare($sql);
-        $requete->bindValue(':par_km', $parcours->getParKm());
-        $requete->bindValue(':vil_num1', $parcours->getVilNum1());
-        $requete->bindValue(':vil_num2', $parcours->getVilNum2());
-        $retour = $requete->execute();
+        $parcours1 = $this->getParcours($parcours->getVilNum1(), $parcours->getVilNum2());
+        $parcours2 = $this->getParcours($parcours->getVilNum2(), $parcours->getVilNum1());
 
+        if ($parcours1 != null || $parcours2 != null)
+            return false;
+        else {
+            $sql = 'INSERT INTO parcours (vil_num1, vil_num2, par_km) VALUES (:vil_num1, :vil_num2, :par_km)';
+            $requete = $this->db->prepare($sql);
+            $requete->bindValue(':par_km', $parcours->getParKm());
+            $requete->bindValue(':vil_num1', $parcours->getVilNum1());
+            $requete->bindValue(':vil_num2', $parcours->getVilNum2());
+            $retour = $requete->execute();
+
+            $requete->closeCursor();
+            return $retour;
+        }
+    }
+
+    public function getParcours($vil_num1, $vil_num2)
+    {
+        $sql = 'SELECT par_num FROM parcours WHERE (vil_num1 = :vil_num1 AND vil_num2 = :vil_num2) OR (vil_num1 = :vil_num2 AND vil_num2 = :vil_num1)';
+
+        $requete = $this->db->prepare($sql);
+        $requete->bindValue(':vil_num1', $vil_num1);
+        $requete->bindValue(':vil_num2', $vil_num2);
+        $requete->execute();
+
+        $par_num = $requete->fetch(PDO::FETCH_OBJ);
         $requete->closeCursor();
-        return $retour;
+        return $par_num->par_num;
     }
 
     public function getAllParcours()
@@ -84,19 +105,6 @@ class ParcoursManager
 
         $requete->closeCursor();
         return $listeVilles;
-    }
-
-    public function getParcours($vil_num1, $vil_num2) {
-        $sql = 'SELECT par_num FROM parcours WHERE (vil_num1 = :vil_num1 AND vil_num2 = :vil_num2) OR (vil_num1 = :vil_num2 AND vil_num2 = :vil_num1)';
-
-        $requete = $this->db->prepare($sql);
-        $requete->bindValue(':vil_num1', $vil_num1);
-        $requete->bindValue(':vil_num2', $vil_num2);
-        $requete->execute();
-
-        $par_num = $requete->fetch(PDO::FETCH_OBJ);
-        $requete->closeCursor();
-        return $par_num->par_num;
     }
 
 }

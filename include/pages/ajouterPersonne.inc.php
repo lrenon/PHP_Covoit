@@ -77,6 +77,7 @@ if (!empty($_POST["per_nom"]) && !empty($_POST["per_prenom"]) && !empty($_POST["
             $divisions = $divisionManager->getAllDivisions();
             $departementManager = new DepartementManager($pdo);
             $departements = $departementManager->getAllDepartements();
+            $villeManager = new VilleManager($pdo);
             ?>
             <h1>Ajouter un étudiant</h1>
             <form action="#" method="post">
@@ -96,7 +97,7 @@ if (!empty($_POST["per_nom"]) && !empty($_POST["per_prenom"]) && !empty($_POST["
                     <?php
                     foreach ($departements as $departement) {
                         ?>
-                        <option value="<?php echo $departement->getDepNum() ?>"><?php echo $departement->getDepNom() ?></option>
+                        <option value="<?php echo $departement->getDepNum() ?>"><?php echo $departement->getDepNom() . " " . $villeManager->getVilNom($departement->getVilNum()) ?></option>
                         <?php
                     }
                     ?>
