@@ -29,29 +29,33 @@ if (empty($_POST["vil_num1"])) {
 }
 
 if (!empty($_POST["vil_num1"]) && empty($_POST["vil_num2"]) && empty($_POST["pro_date"]) && empty($_POST["pro_time"]) && empty($_POST["pro_place"])) {
-    $_SESSION["vil_num1"] = $_POST["vil_num1"];
-    ?>
-    <form action="index.php?page=9" method="post" id="proposerTrajet">
-        <label>Ville de départ : <?php echo $villeManager->getVilNom($_SESSION["vil_num1"]) ?></label>
-        <label for="vil_num2">Ville d'arrivée :
-            <select name="vil_num2" id="vil_num2">
-                <?php
-                foreach ($parcoursManager->getAllArrivees($_SESSION["vil_num1"]) as $ville) {
-                    ?>
-                    <option value="<?php echo $ville->getVilNum() ?>"><?php echo $ville->getVilNom() ?></option>
+    if ($_POST["vil_num1"] != 0) {
+        $_SESSION["vil_num1"] = $_POST["vil_num1"];
+        ?>
+        <form action="index.php?page=9" method="post" id="proposerTrajet">
+            <label>Ville de départ : <?php echo $villeManager->getVilNom($_SESSION["vil_num1"]) ?></label>
+            <label for="vil_num2">Ville d'arrivée :
+                <select name="vil_num2" id="vil_num2">
                     <?php
-                }
-                ?>
-            </select>
-        </label>
-        <label for="pro_date">Date de départ : <input type="date" name="pro_date" id="pro_date"
-                                                      value="<?php echo date('Y-m-d'); ?>"></label>
-        <label for="pro_time">Heure de départ : <input type="time" name="pro_time" id="pro_time"
-                                                       value="<?php echo date("H:i:s"); ?>"></label>
-        <label for="pro_place">Nombre de places : <input type="text" name="pro_place" id="pro_place"></label>
-        <input type="submit" name="submit" value="Valider">
-    </form>
-    <?php
+                    foreach ($parcoursManager->getAllArrivees($_SESSION["vil_num1"]) as $ville) {
+                        ?>
+                        <option value="<?php echo $ville->getVilNum() ?>"><?php echo $ville->getVilNom() ?></option>
+                        <?php
+                    }
+                    ?>
+                </select>
+            </label>
+            <label for="pro_date">Date de départ : <input type="date" name="pro_date" id="pro_date"
+                                                          value="<?php echo date('Y-m-d'); ?>"></label>
+            <label for="pro_time">Heure de départ : <input type="time" name="pro_time" id="pro_time"
+                                                           value="<?php echo date("H:i:s"); ?>"></label>
+            <label for="pro_place">Nombre de places : <input type="text" name="pro_place" id="pro_place"></label>
+            <input type="submit" name="submit" value="Valider">
+        </form>
+        <?php
+    } else {
+        echo "Vous partez bien de quelque part, non... ? Alors indiquez votre ville de départ !";
+    }
 }
 
 if (empty($_POST["vil_num1"]) && !empty($_POST["vil_num2"]) && !empty($_POST["pro_date"]) && !empty($_POST["pro_time"]) && !empty($_POST["pro_place"])) {
